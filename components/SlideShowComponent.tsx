@@ -7,13 +7,13 @@ interface PropTypes {
 
 export default function SlideShow({title, artist, currentDataIndex, updateDataIndex}: PropTypes) {
     return (
-        <div className="flex w-full justify-between">
+        <div className="flex w-full h-[72px] justify-between items-center">
             <div>
-                <div>{title}</div>
-                <div>{artist}</div>
+                <div className="text-[14px] font-bold ">{title}</div>
+                <div className="text-[10px]">{artist}</div>
             </div>
 
-            <div className="flex">
+            <div className="flex w-[20%] justify-between">
                 <div onClick={() => {updateDataIndex(false)}}>            
                     <svg width="26" height="24" xmlns="http://www.w3.org/2000/svg"><g stroke="#000" fill="none" fillRule="evenodd"><path d="M24.166 1.843L3.627 12.113l20.539 10.269V1.843z" strokeWidth="2"/><path fill="#D8D8D8" d="M.986.5h-1v22.775h1z"/></g></svg>
                 </div>
