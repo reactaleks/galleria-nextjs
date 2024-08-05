@@ -14,17 +14,17 @@ export default function SlideShow({
     const slideShowProgress = currentDataIndex/14 * 100
 
   return (
-    <div className="flex w-full h-[72px] justify-start items-center mt-36 flex-col">
+    <div className="flex w-full h-[72px] md:h-[96px] justify-start items-center mt-36 md:mt-6 xl:mt-28 flex-col">
       <div className="w-full h-[1%] bg-[#979797] z-0 opacity-50">
         <div className="w-[10%] h-full bg-[#000000] z-10" style={{width: slideShowProgress + '%'}}></div>
       </div>
       <div className="flex w-full h-full justify-between items-center px-6">
         <div>
-          <div className="text-[14px] font-baskerville_bold ">{title}</div>
-          <div className="text-[10px] opacity-75">{artist}</div>
+          <div className="text-[14px] md:text-[18px] font-baskerville_bold ">{title}</div>
+          <div className="text-[10px] md:text-[13px] opacity-75">{artist}</div>
         </div>
 
-        <div className="flex w-[20%] justify-between">
+        <div className="flex w-[20%] md:w-[10%] xl:w-[5%] justify-between">
           <button
             onClick={() => {
               updateDataIndex(false);

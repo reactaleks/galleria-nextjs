@@ -21,9 +21,10 @@ export default function LightShow({ imageUrl }: PropTypes) {
           width={1000}
           height={1000}
           alt=""
-          className="object-fill"
+          className="object-fill xl:max-h-[770px] xl:object-center xl:object-contain"
+        
         />
-        <div className="absolute text-white -top-12 right-0 font-baskerville_bold text-[14px] tracking-[3px]" onClick={openLightShow}>
+        <div className="absolute text-white -top-12 right-0 font-baskerville_bold text-[14px] tracking-[3px] " onClick={openLightShow}>
           close
         </div>
       </div>

@@ -9,7 +9,7 @@ interface PropTypes {
 
 export default function Thumbnail({ heading, artist, thumbnail }: PropTypes) {
   return (
-    <Link href={`/art/${heading}`} className="relative w-[90%] mx-auto grid">
+    <Link href={`/art/${heading}`} className="relative  mx-auto grid ">
       <Image
         src={thumbnail}
         alt=""

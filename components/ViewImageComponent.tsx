@@ -5,7 +5,7 @@ export default function ViewImage() {
   return (
     <div
       onClick={openLightShow}
-      className="w-[152px] h-[40px] bg-black text-white flex items-center justify-around bg-opacity-75 absolute top-4 left-4 z-0"
+      className="w-[152px] h-[40px] bg-black text-white flex items-center justify-around bg-opacity-75 absolute top-4 left-4 z-0 md:bottom-4 md:top-auto"
     >
       <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg">
         <g fill="#FFF" fillRule="nonzero">

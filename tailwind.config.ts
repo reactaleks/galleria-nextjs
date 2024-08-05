@@ -16,6 +16,9 @@ const config: Config = {
       fontFamily: {
         'baskerville': 'Baskerville-regular',
         'baskerville_bold': 'Baskerville-bold',
+      },
+      colors: {
+        'gray-main': '#7D7D7D'
       }
     },
   },
