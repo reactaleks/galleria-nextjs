@@ -18,7 +18,7 @@ export default function Thumbnail({ heading, artist, thumbnail }: PropTypes) {
         className="-z-10 relative"
       />
       <div className="z-10 absolute bottom-0 text-white mx-6 mb-6 w-[80%]">
-        <div className="text-[24px] font-bold">{heading}</div>
+        <div className="text-[24px] font-baskerville_bold">{heading}</div>
         <div className="text-[13px]">{artist}</div>
       </div>
     </Link>

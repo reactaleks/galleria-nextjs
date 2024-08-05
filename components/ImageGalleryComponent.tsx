@@ -13,7 +13,7 @@ export default function ImageGallery() {
 
   const galleryItems = data.map((item, key) => {
     return (
-      <div key={key} className="mt-6">
+      <div key={key} className="mt-6 ">
         <Thumbnail
           heading={item.name}
           artist={item.artist.name}
@@ -21,7 +21,6 @@ export default function ImageGallery() {
         />
         <LightShowContextProvider>
           <LightShow imageUrl={item.images.gallery}/>
-          <ViewImage />
         </LightShowContextProvider>
 
       </div>

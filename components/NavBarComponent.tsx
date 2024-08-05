@@ -22,7 +22,7 @@ export default function NavBar() {
           </svg>
         </Link>
         <Link
-          className="text-[9px] font-bold tracking-[1.93px] uppercase"
+          className="text-[9px] font-baskerville_bold tracking-[1.93px] uppercase"
           href={`/art/${data[0].name}`}
           onClick={startSlideShow}
         >
