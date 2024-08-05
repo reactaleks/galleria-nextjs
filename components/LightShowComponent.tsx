@@ -11,22 +11,22 @@ export default function LightShow({ imageUrl }: PropTypes) {
 
   return (
     <div
-      className={`${isOpen ? "absolute" : "hidden"} top-0  h-screen w-screen`}
+      className={`${
+        isOpen ? "fixed" : "hidden"
+      } top-0 left-0 h-screen w-screen  bg-black flex justify-center items-center px-6 bg-opacity-85 z-20`}
     >
       <div className="relative">
-        
-      <Image
-        src={imageUrl}
-        width={1000}
-        height={1000}
-        alt=""
-        className="object-fill"
-      />
-      <div className="absolute text-white top-0" onClick={openLightShow}>close</div>
-
-
+        <Image
+          src={imageUrl}
+          width={1000}
+          height={1000}
+          alt=""
+          className="object-fill"
+        />
+        <div className="absolute text-white -top-12 right-0 font-baskerville_bold text-[14px] tracking-[3px]" onClick={openLightShow}>
+          close
+        </div>
       </div>
-
     </div>
   );
 }

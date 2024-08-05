@@ -22,7 +22,7 @@ export function LightShowContextProvider({ children }: PropTypes) {
 
   return (
     <LightShowContext.Provider value={{ isOpen, openLightShow }}>
-      <>{children}</>;
+      <>{children}</>
     </LightShowContext.Provider>
   );
 }
