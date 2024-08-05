@@ -1,12 +1,15 @@
 "use client";
-import { useContext } from "react";
-import { DataContext, LightShowContext, LightShowContextProvider } from "./ContextProviderComponent";
+import { useContext, useEffect } from "react";
+import { DataContext, LightShowContext, LightShowContextProvider, SlideShowContext } from "./ContextProviderComponent";
 import Thumbnail from "./ThumbnailComponent";
 import LightShow from "./LightShowComponent";
 import ViewImage from "./ViewImageComponent";
 
 export default function ImageGallery() {
+  useEffect(() => {
+  }, [])
   const data = useContext(DataContext);
+  const { slideShow, startSlideShow } = useContext(SlideShowContext);
 
   const galleryItems = data.map((item, key) => {
     return (

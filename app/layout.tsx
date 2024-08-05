@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { ContextProvider } from "@/components/ContextProviderComponent";
+import {
+  ContextProvider,
+  SlideShowContextProvider,
+} from "@/components/ContextProviderComponent";
 import NavBar from "@/components/NavBarComponent";
 import "./globals.css";
 
@@ -19,8 +22,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NavBar/>
-        <ContextProvider>{children}</ContextProvider>
+        <ContextProvider>
+          <SlideShowContextProvider>
+            <NavBar />
+            {children}
+          </SlideShowContextProvider>
+        </ContextProvider>
       </body>
     </html>
   );

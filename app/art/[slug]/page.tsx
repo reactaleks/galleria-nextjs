@@ -4,6 +4,7 @@ import {
   DataContext,
   LightShowContext,
   LightShowContextProvider,
+  SlideShowContext,
 } from "@/components/ContextProviderComponent";
 import ViewImage from "@/components/ViewImageComponent";
 import SlideShow from "@/components/SlideShowComponent";
@@ -14,12 +15,12 @@ export default function Page({ params }: { params: { slug: string } }) {
   // Set context
   const data = useContext(DataContext);
   const lighShow = useContext(LightShowContext);
+  const { slideShow, startSlideShow } = useContext(SlideShowContext);
   // States for data and data index
   const [dataIndex, setDataIndex] = useState(0);
   const [pageData, setPageData] = useState(data[dataIndex]);
   // Get page title from slug by replacing %20 with empty space
   const pageTitle = params.slug.replace(/%20/g, " ");
-
   // Do stuff when loaded
   useEffect(() => {
     getDataPage();
@@ -30,8 +31,8 @@ export default function Page({ params }: { params: { slug: string } }) {
     for (let i = 0; i < data.length; i++) {
       const element = data[i];
       if (element.name === pageTitle) {
-        setDataIndex(i)
-        setPageData(Object.values(data)[i])
+        setDataIndex(i);
+        setPageData(Object.values(data)[i]);
       }
     }
   };
@@ -44,6 +45,16 @@ export default function Page({ params }: { params: { slug: string } }) {
       setPageData(data[newIndex]);
     }
   };
+
+  // : slideshow
+  if (slideShow) {
+    if (dataIndex < data.length - 1) {
+      setTimeout(() => {
+        setDataIndex(dataIndex + 1)
+        setPageData(data[dataIndex + 1])
+      }, 1000)
+    } 
+  } 
 
   return (
     <div>
