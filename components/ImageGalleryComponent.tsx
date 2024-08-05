@@ -13,7 +13,7 @@ export default function ImageGallery() {
 
   const galleryItems = data.map((item, key) => {
     return (
-      <div key={key}>
+      <div key={key} className="mt-6">
         <Thumbnail
           heading={item.name}
           artist={item.artist.name}
@@ -28,5 +28,5 @@ export default function ImageGallery() {
     );
   });
   
-  return <>{galleryItems}</>;
+  return <div className="flex flex-col w-[90vw] mx-auto pb-6">{galleryItems}</div>;
 }
