@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode,createContext } from "react";
+import { ReactNode,createContext, useState } from "react";
 import data from '../data/data.json'
 
 interface PropTypes {
@@ -8,7 +8,22 @@ interface PropTypes {
 }
 
 export const DataContext = createContext(data);
-export function ContextProvider({children}:PropTypes) {
+export const LightShowContext = createContext(null);
 
+export function ContextProvider({children}:PropTypes) {
   return <>{children}</>;
+}
+
+export function LightShowContextProvider({children}:PropTypes) {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const openLightShow = () => setIsOpen(!isOpen)
+
+  return (
+    <LightShowContext.Provider value={{isOpen, openLightShow}}>
+
+      <>{children}</>;
+
+    </LightShowContext.Provider>
+  )
 }
