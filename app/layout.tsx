@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className='font-baskerville xl:h-screen xl:flex xl:flex-col xl:justify-between'>
+      <body className='font-baskerville min-h-[100vh] xl:h-[100vh] 2xl:min-h-[100vh]'>
         <ContextProvider>
           <SlideShowContextProvider>
             <NavBar />

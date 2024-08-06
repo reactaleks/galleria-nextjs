@@ -24,8 +24,28 @@ export default function Page({ params }: { params: { slug: string } }) {
   // Do stuff when loaded
   useEffect(() => {
     getDataPage();
+
   }, []);
 
+  useEffect(() => {
+  // : slideshow
+  if (slideShow) {
+    if (dataIndex < data.length - 1) {
+      const timeout = setInterval(() => {
+        setDataIndex(dataIndex + 1);
+        setPageData(data[dataIndex + 1]);
+      }, 1000);
+      return () => {
+        clearInterval(timeout)
+      }
+    } else {
+      startSlideShow()
+    }
+  } 
+
+
+
+  }, [slideShow, dataIndex, data])
   // : find data index
   const getDataPage = () => {
     for (let i = 0; i < data.length; i++) {
@@ -46,32 +66,23 @@ export default function Page({ params }: { params: { slug: string } }) {
     }
   };
 
-  // : slideshow
-  if (slideShow) {
-    if (dataIndex < data.length - 1) {
-      setTimeout(() => {
-        setDataIndex(dataIndex + 1);
-        setPageData(data[dataIndex + 1]);
-      }, 1000);
-    }
-  }
 
   return (
-    <div className="w-[100vw] mx-auto pt-6 ">
-      <div className="w-[90%] mx-auto xl:flex">
+    <div className="w-full min-h-[90vh] pt-6  md:flex md:flex-col md:justify-between">
+      <div className="w-[90%] md:h-auto m-auto xl:flex ">
         <div className="relative xl:w-[50vw]">
           <Image
             src={pageData?.images.gallery}
             width={1000}
             height={1000}
             alt=""
-            className="md:w-[475px] md:h-[560px] "
+            className="md:w-[475px] md:h-[560px] relative"
           />
           <LightShowContextProvider>
             <LightShow imageUrl={pageData?.images.gallery} />
             <ViewImage />
           </LightShowContextProvider>
-          <div className="absolute -bottom-16 md:right-0 md:-top-1 ">
+          <div className="absolute -bottom-16 md:left-64 md:-top-1 ">
             <div className="w-[280px] h-[133px] md:w-[445px] md:h-[302px] flex flex-col bg-white justify-center md:justify-start md:items-start md:p-12 ">
               <div className="text-[24px] md:text-[56px] md:leading-[64px] font-bold text-gray-main md:text-[#000000]">{pageData?.name}</div>
               <div className="text-[15x] text-gray-main md:text-left">{pageData?.artist.name}</div>
@@ -88,12 +99,11 @@ export default function Page({ params }: { params: { slug: string } }) {
           </div>
         </div>
 
-        <div className="text-[100px] md:text-[200px] font-bold text-[#F3F3F3] text-end relative">
-          <div className="absolute right-0 top-16 md:left-0 md:right-auto md:top-0 xl:-top-12 -z-10">{pageData?.year}</div>
-        </div>
 
-        <div className="text-[14px] leading-[28px] text-[#7D7D7D] mt-44 md:mt-32 md:w-[60vw] xl:w-[30vw] md:mx-auto md:leading-[28px]">
-          {pageData?.description}
+
+        <div className="text-[14px] leading-[28px] text-[#7D7D7D] mt-44 md:mt-32 md:w-[60vw] xl:w-[350px] md:mx-auto md:leading-[28px] relative">
+          <div className="text-[100px] md:text-[200px] opacity-25 absolute -top-12 right-0 md:right-auto md:-left-24 xl:left-auto">{pageData?.year}</div>
+          <div className="relative">{pageData?.description}</div>
           <div className="uppercase underline text-[9px] tracking-[1.93px] text-gray-main mt-12">
           <a href={pageData?.source} target="_blank">
             Go to source

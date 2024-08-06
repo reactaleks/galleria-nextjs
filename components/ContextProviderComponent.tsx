@@ -8,8 +8,8 @@ interface PropTypes {
 }
 
 export const DataContext = createContext(data);
-export const LightShowContext = createContext(null);
-export const SlideShowContext = createContext(false);
+export const LightShowContext = createContext({isOpen: false, openLightShow: () => {}});
+export const SlideShowContext = createContext({slideShow: false, startSlideShow: () => {}});
 
 export function ContextProvider({ children }: PropTypes) {
   return <>{children}</>;
@@ -30,6 +30,7 @@ export function LightShowContextProvider({ children }: PropTypes) {
 export function SlideShowContextProvider({ children }: PropTypes) {
   const [slideShow, setSlideShow] = useState(false);
   const startSlideShow = () => setSlideShow(!slideShow);
+   
   return (
     <SlideShowContext.Provider value={{slideShow, startSlideShow}}>
       <>{children}</>

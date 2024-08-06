@@ -7,9 +7,14 @@ import ViewImage from "./ViewImageComponent";
 
 export default function ImageGallery() {
   useEffect(() => {
+    if(slideShow) {
+      startSlideShow()
+    }
   }, [])
   const data = useContext(DataContext);
   const { slideShow, startSlideShow } = useContext(SlideShowContext);
+  
+
 
   const galleryItems = data.map((item, key) => {
     return (
@@ -27,5 +32,5 @@ export default function ImageGallery() {
     );
   });
   
-  return <div className=" w-[90vw] xl:w-[95vw] mx-auto md:columns-2xs md:gap-0 xl:columns-4xs xl:gap-2 pb-6 md:pt-6">{galleryItems}</div>;
+  return <div className=" w-[90vw] xl:w-[95vw] mx-auto md:columns-2 md:gap-0 xl:columns-4 xl:gap-0 pb-6 md:pt-6">{galleryItems}</div>;
 }
