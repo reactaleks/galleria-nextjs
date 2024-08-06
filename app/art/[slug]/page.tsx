@@ -24,8 +24,28 @@ export default function Page({ params }: { params: { slug: string } }) {
   // Do stuff when loaded
   useEffect(() => {
     getDataPage();
+
   }, []);
 
+  useEffect(() => {
+  // : slideshow
+  if (slideShow) {
+    if (dataIndex < data.length - 1) {
+      const timeout = setInterval(() => {
+        setDataIndex(dataIndex + 1);
+        setPageData(data[dataIndex + 1]);
+      }, 1000);
+      return () => {
+        clearInterval(timeout)
+      }
+    } else {
+      startSlideShow()
+    }
+  } 
+
+
+
+  }, [slideShow, dataIndex, data])
   // : find data index
   const getDataPage = () => {
     for (let i = 0; i < data.length; i++) {
@@ -46,15 +66,6 @@ export default function Page({ params }: { params: { slug: string } }) {
     }
   };
 
-  // : slideshow
-  if (slideShow) {
-    if (dataIndex < data.length - 1) {
-      setTimeout(() => {
-        setDataIndex(dataIndex + 1);
-        setPageData(data[dataIndex + 1]);
-      }, 1000);
-    }
-  }
 
   return (
     <div className="w-full min-h-[90vh] pt-6  md:flex md:flex-col md:justify-between">

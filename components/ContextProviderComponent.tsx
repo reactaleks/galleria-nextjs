@@ -30,6 +30,7 @@ export function LightShowContextProvider({ children }: PropTypes) {
 export function SlideShowContextProvider({ children }: PropTypes) {
   const [slideShow, setSlideShow] = useState(false);
   const startSlideShow = () => setSlideShow(!slideShow);
+   
   return (
     <SlideShowContext.Provider value={{slideShow, startSlideShow}}>
       <>{children}</>

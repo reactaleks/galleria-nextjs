@@ -1,7 +1,7 @@
 interface PropTypes {
   title: string | undefined;
   artist: string | undefined;
-  updateDataIndex: (arg0:boolean) => void;
+  updateDataIndex: (arg0: boolean) => void;
   currentDataIndex: number;
 }
 
@@ -11,17 +11,21 @@ export default function SlideShow({
   currentDataIndex,
   updateDataIndex,
 }: PropTypes) {
-
-    const slideShowProgress = currentDataIndex/14 * 100
+  const slideShowProgress = (currentDataIndex / 14) * 100;
 
   return (
     <div className="flex w-full h-[72px] justify-start items-center mt-36 md:mt-6 xl:mt-28 flex-col">
       <div className="w-full h-[1%] bg-[#979797] z-0 opacity-50">
-        <div className="w-[10%] h-full bg-[#000000] z-10" style={{width: slideShowProgress + '%'}}></div>
+        <div
+          className="w-[10%] h-full bg-[#000000] z-10"
+          style={{ width: slideShowProgress + "%" }}
+        ></div>
       </div>
       <div className="flex w-full h-full justify-between items-center px-6">
         <div>
-          <div className="text-[14px] md:text-[18px] font-baskerville_bold ">{title}</div>
+          <div className="text-[14px] md:text-[18px] font-baskerville_bold ">
+            {title}
+          </div>
           <div className="text-[10px] md:text-[13px] opacity-75">{artist}</div>
         </div>
 

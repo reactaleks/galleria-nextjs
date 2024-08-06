@@ -7,9 +7,14 @@ import ViewImage from "./ViewImageComponent";
 
 export default function ImageGallery() {
   useEffect(() => {
+    if(slideShow) {
+      startSlideShow()
+    }
   }, [])
   const data = useContext(DataContext);
   const { slideShow, startSlideShow } = useContext(SlideShowContext);
+  
+
 
   const galleryItems = data.map((item, key) => {
     return (
