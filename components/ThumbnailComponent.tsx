@@ -15,7 +15,7 @@ export default function Thumbnail({ heading, artist, thumbnail }: PropTypes) {
         alt=""
         width={1000}
         height={1000}
-        className="-z-10 relative"
+        className="-z-10 relative aspect-auto"
       />
       <div className="z-10 absolute bottom-0 text-white mx-6 mb-6 w-[80%]">
         <div className="text-[24px] font-baskerville_bold">{heading}</div>

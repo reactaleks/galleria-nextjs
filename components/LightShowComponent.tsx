@@ -3,7 +3,6 @@ import { useContext } from "react";
 import { LightShowContext } from "./ContextProviderComponent";
 interface PropTypes {
   imageUrl: string;
-  showLightShow: boolean;
 }
 
 export default function LightShow({ imageUrl }: PropTypes) {

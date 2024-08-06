@@ -8,8 +8,8 @@ interface PropTypes {
 }
 
 export const DataContext = createContext(data);
-export const LightShowContext = createContext(null);
-export const SlideShowContext = createContext(false);
+export const LightShowContext = createContext({isOpen: false, openLightShow: () => {}});
+export const SlideShowContext = createContext({slideShow: false, startSlideShow: () => {}});
 
 export function ContextProvider({ children }: PropTypes) {
   return <>{children}</>;
