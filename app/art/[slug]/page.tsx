@@ -2,7 +2,6 @@
 import { useContext, useState, useEffect } from "react";
 import {
   DataContext,
-  LightShowContext,
   LightShowContextProvider,
   SlideShowContext,
 } from "@/components/ContextProviderComponent";
@@ -14,11 +13,9 @@ import LightShow from "@/components/LightShowComponent";
 export default function Page({ params }: { params: { slug: string } }) {
   // Set context
   const data = useContext(DataContext);
-  const lighShow = useContext(LightShowContext);
-  const { slideShow, startSlideShow } = useContext(SlideShowContext);
+  const { slideShow, startSlideShow, slideShowIndex, setSlideShowIndex } = useContext(SlideShowContext);
   // States for data and data index
-  const [dataIndex, setDataIndex] = useState(0);
-  const [pageData, setPageData] = useState(data[dataIndex]);
+  const [pageData, setPageData] = useState(data[slideShowIndex]);
   // Get page title from slug by replacing %20 with empty space
   const pageTitle = params.slug.replace(/%20/g, " ");
   // Do stuff when loaded
@@ -30,10 +27,10 @@ export default function Page({ params }: { params: { slug: string } }) {
   useEffect(() => {
   // : slideshow
   if (slideShow) {
-    if (dataIndex < data.length - 1) {
+    if (slideShowIndex < data.length - 1) {
       const timeout = setInterval(() => {
-        setDataIndex(dataIndex + 1);
-        setPageData(data[dataIndex + 1]);
+        setSlideShowIndex(slideShowIndex + 1);
+        setPageData(data[slideShowIndex + 1]);
       }, 1000);
       return () => {
         clearInterval(timeout)
@@ -41,17 +38,15 @@ export default function Page({ params }: { params: { slug: string } }) {
     } else {
       startSlideShow()
     }
-  } 
+  }
 
-
-
-  }, [slideShow, dataIndex, data])
+  }, [slideShow, slideShowIndex, data])
   // : find data index
   const getDataPage = () => {
     for (let i = 0; i < data.length; i++) {
       const element = data[i];
       if (element.name === pageTitle) {
-        setDataIndex(i);
+        setSlideShowIndex(i);
         setPageData(Object.values(data)[i]);
       }
     }
@@ -59,13 +54,12 @@ export default function Page({ params }: { params: { slug: string } }) {
 
   // : increment or decrement page index
   const updateIndex = (increment: boolean) => {
-    const newIndex = increment ? dataIndex + 1 : dataIndex - 1;
+    const newIndex = increment ? slideShowIndex + 1 : slideShowIndex - 1;
     if (newIndex >= 0 && newIndex < data.length) {
-      setDataIndex(newIndex);
+      setSlideShowIndex(newIndex);
       setPageData(data[newIndex]);
     }
   };
-
 
   return (
     <div className="w-full min-h-[90vh] pt-6  md:flex md:flex-col md:justify-between">
@@ -117,7 +111,7 @@ export default function Page({ params }: { params: { slug: string } }) {
       <SlideShow
         title={pageData?.name}
         artist={pageData?.artist.name}
-        currentDataIndex={dataIndex}
+        currentDataIndex={slideShowIndex}
         updateDataIndex={updateIndex}
       />
     </div>
