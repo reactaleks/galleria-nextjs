@@ -1,3 +1,7 @@
+
+import { useRouter } from 'next/navigation'
+import { useContext } from 'react';
+import { SlideShowContext, DataContext } from './ContextProviderComponent';
 interface PropTypes {
   title: string | undefined;
   artist: string | undefined;
@@ -11,8 +15,14 @@ export default function SlideShow({
   currentDataIndex,
   updateDataIndex,
 }: PropTypes) {
-  const slideShowProgress = (currentDataIndex / 14) * 100;
 
+  const slideShowProgress = (currentDataIndex / 14) * 100;
+  const { slideShow, startSlideShow, slideShowIndex, restartSlideShow } = useContext(SlideShowContext);
+  const data = useContext(DataContext);
+
+  const router = useRouter();
+
+  console.log(title);
   return (
     <div className="flex w-full h-[72px] justify-start items-center mt-36 md:mt-6 xl:mt-28 flex-col">
       <div className="w-full h-[1%] bg-[#979797] z-0 opacity-50">
@@ -33,6 +43,7 @@ export default function SlideShow({
           <button
             onClick={() => {
               updateDataIndex(false);
+              router.push(`/art/${data[slideShowIndex-1].name}`)
             }}
             disabled={currentDataIndex == 0}
             className="disabled:opacity-25"
@@ -50,6 +61,7 @@ export default function SlideShow({
           <button
             onClick={() => {
               updateDataIndex(true);
+              router.push(`/art/${data[slideShowIndex+1].name}`)
             }}
             disabled={currentDataIndex == 14}
             className="disabled:opacity-25"

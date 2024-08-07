@@ -9,11 +9,11 @@ export default function LightShow({ imageUrl }: PropTypes) {
   const { isOpen, openLightShow } = useContext(LightShowContext);
 
   return (
-    <div
+    <div 
       className={`${
         isOpen ? "fixed" : "hidden"
       } top-0 left-0 h-screen w-screen  bg-black flex justify-center items-center px-6 bg-opacity-85 z-20`}
-    >
+    >   
       <div className="relative">
         <Image
           src={imageUrl}

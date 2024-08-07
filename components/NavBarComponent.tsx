@@ -6,10 +6,8 @@ import { SlideShowContext } from "./ContextProviderComponent";
 import { DataContext } from "./ContextProviderComponent";
 
 export default function NavBar() {
-  const { slideShow, startSlideShow } = useContext(SlideShowContext);
-
+  const { slideShow, startSlideShow, slideShowIndex, restartSlideShow } = useContext(SlideShowContext);
   const data = useContext(DataContext);
-
   return (
     <nav className="h-[10vh] w-full border border-x-0 border-t-0 border-b-2 border-[#E5E5E5] flex justify-between">
       <div className=" flex flex-row items-center justify-between w-[90%] mx-auto">
@@ -22,7 +20,7 @@ export default function NavBar() {
         <Link
           className="text-[9px] font-baskerville_bold tracking-[1.93px] uppercase"
           href={`/art/${data[0].name}`}
-          onClick={startSlideShow}
+          onClick={slideShowIndex == data.length - 1 ? restartSlideShow : startSlideShow}
         >
           {slideShow ? "Stop slideshow" : "Start slideshow"}
         </Link>
