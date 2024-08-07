@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className='font-baskerville min-h-[100vh] xl:h-[100vh] 2xl:min-h-[100vh] overflow-x-hidden relative'>
+      <body className='font-baskerville min-h-[100vh]  overflow-x-hidden relative'>
         <ContextProvider>
           <SlideShowContextProvider>
             <NavBar />

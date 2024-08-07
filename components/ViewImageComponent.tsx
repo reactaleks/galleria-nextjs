@@ -1,11 +1,15 @@
 import { useContext } from "react";
 import { LightShowContext } from "./ContextProviderComponent";
+import { motion } from "framer-motion";
 export default function ViewImage() {
   const { isOpen, openLightShow } = useContext(LightShowContext);
   return (
-    <div
+    <motion.div
+      initial={{opacity:0, x:100}}
+      animate={{opacity:100, x:0}}
+      transition={{duration:2}}
       onClick={openLightShow}
-      className="w-[152px] h-[40px] bg-black text-white flex items-center justify-around bg-opacity-75 absolute top-4 left-4 z-0 md:bottom-4 md:top-auto"
+      className="w-[152px] h-[40px] cursor-pointer bg-black hover:bg-white hover:bg-opacity-25  text-white flex items-center justify-around bg-opacity-75 absolute top-4 left-4 z-0 md:bottom-4 md:top-auto"
     >
       <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg">
         <g fill="#FFF" fillRule="nonzero">
@@ -13,6 +17,6 @@ export default function ViewImage() {
         </g>
       </svg>
       <div className="uppercase font-baskerville_bold text-[10px] tracking-[2.14px]">view image</div>
-    </div>
+    </motion.div>
   );
 }

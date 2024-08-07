@@ -17,18 +17,19 @@ export default function SlideShow({
 }: PropTypes) {
 
   const slideShowProgress = (currentDataIndex / 14) * 100;
-  const { slideShow, startSlideShow, slideShowIndex, restartSlideShow } = useContext(SlideShowContext);
+  const {slideShowIndex} = useContext(SlideShowContext);
   const data = useContext(DataContext);
 
   const router = useRouter();
 
   console.log(title);
   return (
-    <div className="flex w-full h-[72px] justify-start items-center mt-36 md:mt-6 xl:mt-28 flex-col">
+    <div className="flex w-full h-[10vh]  justify-start items-center flex-col">
       <div className="w-full h-[1%] bg-[#979797] z-0 opacity-50">
         <div
           className="w-[10%] h-full bg-[#000000] z-10"
           style={{ width: slideShowProgress + "%" }}
+          
         ></div>
       </div>
       <div className="flex w-full h-full justify-between items-center px-6">
