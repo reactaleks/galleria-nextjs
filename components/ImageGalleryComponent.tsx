@@ -1,9 +1,9 @@
 "use client";
 import { useContext, useEffect } from "react";
-import { DataContext, LightShowContext, LightShowContextProvider, SlideShowContext } from "./ContextProviderComponent";
+import { DataContext, LightShowContextProvider, SlideShowContext } from "./ContextProviderComponent";
 import Thumbnail from "./ThumbnailComponent";
 import LightShow from "./LightShowComponent";
-import ViewImage from "./ViewImageComponent";
+import { motion } from "framer-motion";
 
 export default function ImageGallery() {
   useEffect(() => {
@@ -18,7 +18,7 @@ export default function ImageGallery() {
 
   const galleryItems = data.map((item, key) => {
     return (
-      <div key={key} className="md:h-auto p-2 md:w-full aspect-auto md:p-1 xl:p-4">
+      <motion.div initial={{opacity:0}} animate={{opacity:100}} key={key} className="md:h-auto p-2 md:w-full aspect-auto md:p-1 xl:p-4">
         <Thumbnail
           heading={item.name}
           artist={item.artist.name}
@@ -28,7 +28,7 @@ export default function ImageGallery() {
           <LightShow imageUrl={item.images.gallery}/>
         </LightShowContextProvider>
 
-      </div>
+      </motion.div>
     );
   });
   
