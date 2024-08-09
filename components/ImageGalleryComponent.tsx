@@ -24,25 +24,24 @@ export default function ImageGallery() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 100 }}
           key={key}
-          className="md:h-auto p-2 md:w-full aspect-auto md:p-1 xl:p-4"
+          className="md:h-auto p-2 md:w-full xl:w-auto aspect-auto md:p-1 "
         >
 
           <Thumbnail
             heading={item.name}
             artist={item.artist.name}
-            thumbnail={item.images.thumbnail}
+            thumbnail={item.images.gallery}
 
           />
 
           <LightShowContextProvider>
-            <LightShow imageUrl={item.images.gallery} />
+            <LightShow imageUrl={item.images.hero.large} />
           </LightShowContextProvider>
         </motion.div>
     );
   });
-
   return (
-    <div className=" w-[90vw] xl:w-[90%] mx-auto md:columns-2 md:gap-0 xl:columns-4 xl:gap-0 pb-6 md:pt-6">
+    <div className=" w-[90vw]   mx-auto md:columns-2 md:gap-0 xl:columns-4 xl:gap-6 pb-6 md:pt-6">
       {galleryItems}
     </div>
   );
