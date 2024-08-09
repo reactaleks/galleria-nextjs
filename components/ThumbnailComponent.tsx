@@ -20,7 +20,7 @@ export default function Thumbnail({
       initial={{ opacity: 0 }}
       animate={{ opacity: 100 }}
       transition={{ duration: randomSpeed.toFixed(2) }}
-
+      className="bg-black bg-opacity-0 hover:bg-opacity-25 xl:mb-6"
     >
       <Link
         href={`/art/${heading}`}
@@ -31,7 +31,7 @@ export default function Thumbnail({
           alt=""
           width={1000}
           height={1000}
-          className="-z-10 relative aspect-auto"
+          className="-z-10 relative"
           priority
         />
         <motion.div

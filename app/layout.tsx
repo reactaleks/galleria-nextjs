@@ -22,7 +22,7 @@ export default function RootLayout({
       <body className='font-baskerville min-h-[100vh]  overflow-x-hidden relative'>
         <ContextProvider>
           <SlideShowContextProvider>
-            <NavBar />
+            <NavBar/>
             {children}
           </SlideShowContextProvider>
         </ContextProvider>

@@ -31,8 +31,12 @@ export function SlideShowContextProvider({ children }: PropTypes) {
   const [slideShow, setSlideShow] = useState(false);
   const [slideShowIndex, setSlideIndex] = useState(0);
 
+
+
   const setSlideShowIndex = (val:number) => setSlideIndex(val)
-  const startSlideShow = () => setSlideShow(!slideShow);
+  const startSlideShow = () => {
+    setSlideShow(!slideShow);
+  }
   const restartSlideShow = () => {
     setSlideShowIndex(0)
     setSlideShow(true)

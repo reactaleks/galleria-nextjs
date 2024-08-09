@@ -22,7 +22,6 @@ export default function SlideShow({
 
   const router = useRouter();
 
-  console.log(title);
   return (
     <div className="flex w-full h-[10vh]  justify-start items-center flex-col">
       <div className="w-full h-[1%] bg-[#979797] z-0 opacity-50">

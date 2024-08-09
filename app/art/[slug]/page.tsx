@@ -71,7 +71,7 @@ export default function Page({ params }: { params: { slug: string } }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 100 }}
         transition={{ duration: 1 }}
-        className="w-full h-[auto] xl:h-[80vh] pt-6  md:flex md:flex-col md:justify-between overflow-x-hidden mb-12 lg:mb-0 overflow-hidden"
+        className="w-full h-[auto] xl:h-[80vh] pt-6  md:flex md:flex-col md:justify-between overflow-x-hidden mb-12 lg:mb-0 overflow-hidden "
         key={slideShowIndex}
       >
         <div className="w-[90%] md:h-auto m-auto xl:flex ">
@@ -131,7 +131,7 @@ export default function Page({ params }: { params: { slug: string } }) {
               initial={{ y: 1000 }}
               animate={{ y: 0 }}
               transition={{ duration: 1 }}
-              className="text-[100px] opacity-25 md:text-[200px] absolute -top-12 right-0 md:right-auto md:-left-24 xl:left-auto "
+              className="text-[100px]  md:text-[200px] opacity-15 absolute -top-12 right-0 md:right-auto md:-left-24 xl:left-auto "
             >
               {pageData?.year}
             </motion.div>
@@ -139,7 +139,7 @@ export default function Page({ params }: { params: { slug: string } }) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 100 }}
               transition={{ duration: 3 }}
-              className=" xl:h-[20vh]"
+              className=" xl:h-[20vh] "
             >
               {pageData?.description}
             </motion.div>
